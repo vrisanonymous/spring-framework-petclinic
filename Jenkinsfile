@@ -61,7 +61,7 @@ pipeline {
                 stage('Run1') {
                     steps {
                         echo "RUN1"
-                        sh 'docker stop petclinic-test && docker rm petclinic-test'
+                        sh 'docker stop petclinic-test || true && docker rm petclinic-test || true'
                         sh 'docker run -d --name petclinic-test -p 8090:8080 petclinic-project:latest'
                     }
                 }
