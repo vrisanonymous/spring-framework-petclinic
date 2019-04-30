@@ -59,15 +59,21 @@ pipeline {
         stage('Parallel Run') {
             parallel {
                 stage('Run1') {
-                    echo "RUN1"
-                    sh 'docker run -d --name petclinic -p 8090:8080 petclinic-project:latest'
+                    steps {
+                        echo "RUN1"
+                        sh 'docker run -d --name petclinic -p 8090:8080 petclinic-project:latest'
+                    }
                 }
                 stage('Run2') {
-                    echo "RUN2"
+                    steps {
+                         echo "RUN2"
+                    }
                 }
                 stage('Run3') {
-                    echo "RUN3"
-                    sh 'docker run -d --name petclinic-uat -p 8290:8080 petclinic-project:latest'
+                    steps {
+                        echo "RUN3"
+                        sh 'docker run -d --name petclinic-uat -p 8290:8080 petclinic-project:latest'
+                    }
                 }
             }
         }
