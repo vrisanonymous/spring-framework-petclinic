@@ -73,7 +73,7 @@ pipeline {
                 stage('Run3') {
                     steps {
                         echo "RUN3"
-                        sh 'docker stop petclinic-uat && docker rm petclinic-uat'
+                        sh 'docker stop petclinic-uat || true && docker rm petclinic-uat || true'
                         sh 'docker run -d --name petclinic-uat -p 8290:8080 petclinic-project:latest'
                     }
                 }
