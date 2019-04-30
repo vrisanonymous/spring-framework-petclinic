@@ -61,7 +61,8 @@ pipeline {
                 stage('Run1') {
                     steps {
                         echo "RUN1"
-                        //sh 'docker run -d --name petclinic -p 8090:8080 petclinic-project:latest'
+                        sh 'docker stop petclinic-test && docker rm petclinic-test'
+                        sh 'docker run -d --name petclinic-test -p 8090:8080 petclinic-project:latest'
                     }
                 }
                 stage('Run2') {
@@ -72,7 +73,8 @@ pipeline {
                 stage('Run3') {
                     steps {
                         echo "RUN3"
-                        //sh 'docker run -d --name petclinic-uat -p 8290:8080 petclinic-project:latest'
+                        sh 'docker stop petclinic-uat && docker rm petclinic-uat'
+                        sh 'docker run -d --name petclinic-uat -p 8290:8080 petclinic-project:latest'
                     }
                 }
             }
