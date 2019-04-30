@@ -53,7 +53,7 @@ pipeline {
             steps{
                 script{
                     value = "docker ps --all --quiet --filter=name=petclinic-test"
-                     def val= sh (returnStdout: true, script: command)
+                     def val= sh (returnStdout: true, script: value)
                    //def value = "docker ps --all --quiet --filter=name='petclinic-test'".execute()
                    //echo "value = $value.text"
                    if ($val.text)
